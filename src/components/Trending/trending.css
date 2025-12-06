@@ -1,0 +1,61 @@
+.paddi {
+  padding: 20px;
+
+}
+
+/* Container that scrolls horizontally */
+.slider-container {
+  width: 95%;
+  height: 300px;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  white-space: nowrap;
+  margin: auto;
+  border-radius: 12px;
+
+  /* Hide scrollbar */
+  scrollbar-width: none; /* Firefox */
+}
+.slider-container::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+/* Flex slider inside */
+.slider {
+  display: flex;
+  height: 100%;
+}
+
+/* Individual slide */
+.slide {
+  flex: 0 0 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  border-radius: 12px;
+}
+
+/* Content overlay */
+.banner-content {
+  position: absolute;
+  bottom: 20px;
+  left: 30px;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  max-width: 80%;
+}
+
+/* Title and rating */
+.movie-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+.movie-rating {
+  font-size: 18px;
+  margin-top: 5px;
+}

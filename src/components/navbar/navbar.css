@@ -1,0 +1,46 @@
+.navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 60px;
+ 
+}
+
+.navbar h1{
+  background: linear-gradient(to right, red, yellow);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+
+}
+
+
+.navlist  li a{
+    display: flex; 
+    align-items: center;
+    text-decoration: none;
+    color: rgb(226, 36, 10);
+}
+
+.navlist  ul{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    list-style: none;
+    padding-top: 2px;
+
+    
+}
+
+
+
+
+
+
+
+.navbarimoji{
+    width: 23px;
+    margin-left: 5px;
+
+}
