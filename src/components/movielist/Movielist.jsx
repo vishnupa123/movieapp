@@ -71,7 +71,7 @@ const Movielist = () => {
                 <input
                   ref={titleref}
                   type="text"
-                  placeholder="Search Your Job..."
+                  placeholder="Search Your Movie..."
                   className="inp"
                 />
               </li>
