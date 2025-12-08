@@ -9,231 +9,259 @@
     align-items: center;
     justify-content: space-between;
     width: 92%;
+    /* KEY FIX: Allow overall header content to wrap */
+    flex-wrap: wrap; 
 }
 
 /* Fire icon */
 .navfire {
-  width: 25px;
-  height: 25px;
-  object-fit: contain;
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
 }
 
+/* Container for all filters and search */
 .moviefs{
     display: flex;
+    /* KEY FIX: Allow sorting/filtering options to wrap */
+    flex-wrap: wrap; 
+    gap: 10px; /* Space between ul, select 1, select 2 */
+    justify-content: center; 
+    margin-top: 10px; 
 }
 
 .moviefs ul{
     display: flex;
-    gap: 30px;
+    gap: 15px; 
     list-style: none;
     color: yellow;
     cursor: pointer;
+    /* KEY FIX: Allow list items to wrap */
+    flex-wrap: wrap; 
+    padding: 0; 
+    margin: 0; 
 }
 
 .moviesorting{
     width: 100px;
-    margin-left: 10px;
     padding: 2px 6px;
     border-radius: 2px;
     color: red;
     outline: none;
+    height: 30px; 
 }
 
 .movielistheader h2{
-  background: linear-gradient(to right, red, yellow);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+    background: linear-gradient(to right, red, yellow);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
 /* Movie list container - 4 cards in a row */
 .main{
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 cards in a row */
-  gap: 10px;
-  padding: 20px;
-  justify-items: center;
-  margin: 10px 40px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 cards in a row */
+    gap: 10px;
+    padding: 20px;
+    justify-items: center;
+    margin: 10px 40px;
 }
 
 /* Individual movie card */
 .movie-card {
-  display: flex;
-  max-width: 350px;
-  background: #3c3737;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  overflow: hidden;
-  transition: transform 0.3s ease;
+    position: relative; 
+    display: flex;
+    max-width: 350px;
+    background: #322b2b; 
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, background 0.3s ease;
+    cursor: pointer;
 }
 
 .movie-card:hover {
-  transform: scale(1.03);
+    transform: scale(1.03);
+    background: #bd2d2d;
 }
 
 /* Image on the left */
 .movie-card__image {
-  flex: 1;
+    flex: 1;
 }
 
 .movie-card__img {
-  width: 140px;
-  height: 210px;
-  object-fit: cover;
+    width: 140px;
+    height: 210px;
+    object-fit: cover;
 }
 
 /* Right side content */
 .movie-card__content {
-  flex: 2;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+    flex: 2;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .movie-card__title {
-  font-size: 1.2rem;
-  margin: 0 0 8px;
-  color: rgb(196, 20, 20);
+    font-size: 1.2rem;
+    margin: 0 0 8px;
+    color: rgb(196, 20, 20);
 }
 
 .movie-card__description {
-  font-size: 0.9rem;
-  color: white;
-  margin: 0 0 10px;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
+    font-size: 0.9rem;
+    color: white;
+    margin: 0 0 10px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
 
 /* Bottom section with rating and release date */
 .movie-card__bottom {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .movie-card__rating {
-  display: flex;
-  align-items: center;
-  gap: 3px;
+    display: flex;
+    align-items: center;
+    gap: 3px;
 }
 
 .movie-card__star {
-  width: 18px;
-  height: 18px;
+    width: 18px;
+    height: 18px;
 }
 
 .movie-card__release-date {
-  font-size: 0.85rem;
-  color: #666;
-}
-
-/* Responsive */
-@media (max-width: 1200px) {
-  .main {
-    grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
-  }
-}
-
-@media (max-width: 900px) {
-  .main {
-    grid-template-columns: repeat(2, 1fr); /* 2 cards per row */
-  }
-}
-
-@media (max-width: 600px) {
-  .main {
-    grid-template-columns: 1fr; /* 1 card per row */
-  }
-
-  .movie-card {
-    flex-direction: column;
-    max-width: 90%;
-  }
-
-  .movie-card__img {
-    width: 100%;
-    height: auto;
-  }
-}
-
-
-/* Individual movie card */
-.movie-card {
-  position: relative; /* required for overlay */
-  display: flex;
-  max-width: 350px;
-  background: #322b2b; /* updated background color */
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  overflow: hidden;
-  transition: transform 0.3s ease, background 0.3s ease;
-  cursor: pointer; /* cursor changes to pointer on hover */
-}
-
-.movie-card:hover {
-  transform: scale(1.03);
-  background: #bd2d2d; /* slightly darker on hover */
-
+    font-size: 0.85rem;
+    color: #666;
 }
 
 /* Overlay that appears on hover */
 .movie-card__overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.6);
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;
-  text-align: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  border-radius: 10px;
-  padding: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 10px;
+    padding: 10px;
 }
 
 .movie-card:hover .movie-card__overlay {
-  opacity: 1;
-}
-
-/* Container for input + button */
-.search-container {
-  display: flex;
-  gap: 10px;           /* spacing between input and button */
-  align-items: center;
-  margin: 20px 0;      /* optional spacing from other elements */
+    opacity: 1;
 }
 
 /* Input field */
 .inp {
-  flex: 1;             /* take available space */
-  padding: 3px 100px;
-  border-radius: 15px;
-  text-indent: 19px;
-  border: 1px solid #ccc;
-  outline: none;
-  font-size: 16px;
+    flex: 1;
+    padding: 3px 100px;
+    border-radius: 15px;
+    text-indent: 19px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 16px;
 }
 
 /* Button */
 .btn {
-  padding: 5px 25px;
-  border-radius: 15px;
-  border: none;
-  background-color: #c30e04;
-  color: white;
-  cursor: pointer;
-  font-size: 14px;
-  transition: 0.3s;
+    padding: 5px 25px;
+    border-radius: 15px;
+    border: none;
+    background-color: #c30e04;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
 }
 
 .btn:hover {
-  background-color: #ff1a00;
+    background-color: #ff1a00;
+}
+
+/* --- Responsive Media Queries --- */
+
+@media (max-width: 1200px) {
+    .main {
+        grid-template-columns: repeat(3, 1fr); 
+    }
+}
+
+@media (max-width: 900px) {
+    .main {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+    
+    /* STACK HEADER: Popular Movies title on top, filters below */
+    .movielistheader {
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 0 20px;
+        width: 95%;
+    }
+    
+    /* Adjust moviefs to take full width and align left */
+    .moviefs {
+        width: 100%;
+        justify-content: flex-start;
+    }
+    .moviefs ul {
+        width: 100%;
+        justify-content: flex-start;
+    }
+    
+    /* Make input easier to use on mobile */
+    .inp {
+        padding: 5px 10px; 
+        text-indent: 5px;
+        width: 100%; /* Important for it to fill the li space */
+    }
+    .btn {
+        flex-shrink: 0; 
+    }
+}
+
+@media (max-width: 600px) {
+    .main {
+        grid-template-columns: 1fr;
+    }
+    .movie-card {
+        flex-direction: column;
+        max-width: 90%;
+    }
+    .movie-card__img {
+        width: 100%;
+        height: auto;
+    }
+    
+    /* Ensure the search input and button also stack nicely */
+    .moviefs ul {
+        gap: 10px;
+    }
+    .moviefs ul li:first-child { 
+        width: 65%; /* Give input more space than the button */
+    }
+    .moviefs ul li:nth-child(2) {
+        width: 25%; /* Give button less space */
+    }
+    .inp {
+        width: 100%;
+    }
 }

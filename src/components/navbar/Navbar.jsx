@@ -6,42 +6,29 @@ import party from '../../assets/partying-face.png'
 
 const Navbar = () => {
   return (
-    <div>
-      
+    <nav className='navbar'>
+      <h1>Movie Hut</h1>
 
-<nav className='navbar'>
-    <h1>Movie Hut</h1>
-
-
-
-
-<div className='navlist'>
-  
-
-<ul>
-    <li className=''><a href="">Popular   <img src={fire} alt=""  className='navbarimoji'/>   </a></li>
-    <li><a href="">Top Rated   <img src={star} alt="" className='navbarimoji' />   </a></li>
-    <li><a href="">UpComming   <img src={party} alt="" className='navbarimoji' />   </a></li>
-      
-
-  
-
-</ul>
-
-</div>
-
-
-
-</nav>
-
-
-
-
-
-
-
-
-    </div>
+      <div className='navlist'>
+        <ul>
+          <li>
+            <a href="">
+              Popular <img src={fire} alt="Fire icon" className='navbarimoji'/>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              Top Rated <img src={star} alt="Star icon" className='navbarimoji' />
+            </a>
+          </li>
+          <li>
+            <a href="">
+              Upcoming <img src={party} alt="Party icon" className='navbarimoji' />
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
   )
 }
 

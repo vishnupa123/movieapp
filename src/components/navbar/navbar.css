@@ -1,46 +1,93 @@
-.navbar{
+/* Base Navbar Styles */
+.navbar {
+    background-color: #202020; /* Dark background */
+    color: white;
+    padding: 15px 30px;
     display: flex;
+    justify-content: space-between; /* Space out the title and the links */
     align-items: center;
-    justify-content: space-between;
-    padding: 10px 60px;
- 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
-.navbar h1{
-  background: linear-gradient(to right, red, yellow);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-
-
+.navbar h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    /* Fancy gradient text for the title */
+    background: linear-gradient(to right, #ff4500, #ff8c00);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
-
-.navlist  li a{
-    display: flex; 
-    align-items: center;
-    text-decoration: none;
-    color: rgb(226, 36, 10);
-}
-
-.navlist  ul{
-    display: flex;
-    align-items: center;
-    gap: 30px;
+/* Navigation List Container */
+.navlist ul {
+    display: flex; /* Arrange list items horizontally */
     list-style: none;
-    padding-top: 2px;
-
-    
+    margin: 0;
+    padding: 0;
+    gap: 30px; /* Space between links */
 }
 
+.navlist li a {
+    text-decoration: none;
+    color: #ccc;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+}
 
+.navlist li a:hover {
+    color: #ff8c00; /* Highlight color on hover */
+}
 
-
-
-
-
-.navbarimoji{
-    width: 23px;
+.navbarimoji {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
     margin-left: 5px;
+}
 
+/* ----------------------------------- */
+/* 📱 RESPONSIVE STYLES (Mobile/Tablet) */
+/* ----------------------------------- */
+
+@media (max-width: 768px) {
+    /* Stack items vertically on smaller screens */
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start; /* Align all items to the left */
+        padding: 10px 20px;
+    }
+
+    /* Add space below the title when stacked */
+    .navbar h1 {
+        margin-bottom: 10px;
+        font-size: 1.5rem;
+    }
+
+    /* Allow the link container to wrap if necessary */
+    .navlist {
+        width: 100%;
+    }
+    
+    /* Make the list links wrap if the screen is very small */
+    .navlist ul {
+        flex-wrap: wrap; 
+        gap: 15px 20px; /* Smaller gap, allow wrapping */
+        justify-content: flex-start; /* Start links from the left */
+    }
+}
+
+@media (max-width: 480px) {
+    /* Further adjust padding for very small mobile screens */
+    .navbar {
+        padding: 10px 15px;
+    }
+    
+    /* Ensure links remain readable */
+    .navlist li a {
+        font-size: 0.9rem;
+    }
 }

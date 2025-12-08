@@ -2,57 +2,57 @@ import React, { useEffect, useRef, useState } from 'react';
 import './movielist.css';
 import fire from '../../assets/fire.png';
 import star from '../../assets/star.png';
-import { getalldata } from '../apii/api';
+import { getalldata } from '../apii/api'; // Assuming this is your API function
 import { useNavigate } from "react-router-dom";
 
 const Movielist = () => {
   const [movi, setmovi] = useState([]);
-  const navigate = useNavigate(); // ✅ Initialize navigate here
+  const navigate = useNavigate();
 
+  // Search/Filter State
+  const [searchfilter, setsearchfilter] = useState('');
+  const [issearched, setissearched] = useState(false);
+  const titleref = useRef(null);
+
+  // Data Fetching
   const getdata = async () => {
-    const data = await getalldata();
-    setmovi(data.results); // TMDB stores movies in data.results
+    try {
+      const data = await getalldata();
+      setmovi(data.results); // TMDB stores movies in data.results
+    } catch (error) {
+      console.error("Error fetching movie data:", error);
+      // Optionally handle error state
+    }
   };
 
   useEffect(() => {
     getdata();
   }, []);
 
+  // Navigation Handler
   const handleClick = (movie) => {
-    navigate(`/movie/${movie.id}`, { state: { movie } }); // ✅ Pass movie data
+    navigate(`/movie/${movie.id}`, { state: { movie } });
   };
 
-  // search filter work
-  const [searchfilter, setsearchfilter] = useState(''); // ✅ string is fine
-  const [issearched, setissearched] = useState(false); // ✅ spelling fix
-
-  // get the value from search input by using useRef
-  const titleref = useRef(null); // link this to the input
-
-  // create function when click the button
+  // Search Handler
   const onsearch = () => {
     const inputValue = titleref.current.value.trim();
 
     if (inputValue) {
-      setsearchfilter(inputValue);   // ✅ store search value
-      setissearched(true);           // ✅ mark as searched
+      setsearchfilter(inputValue);
+      setissearched(true);
     } else {
       setsearchfilter('');
       setissearched(false);
     }
   };
 
-  console.log("Search value:", searchfilter);
-  console.log("Is searched:", issearched);
-
-  // Optional: Filter movies based on search
-
-  const filteredMovies = issearched? movi.filter(movie =>movie.title.toLowerCase().includes(searchfilter.toLowerCase()))
-    : movi;   // movie ennath nammude api vachi movie eduth vech variable  and lowercase uppercase search cheydh filteredmovie il vekkum
-
-// pinne ee filterred movie ternerry operatoin vech movie list il kodukkum
-
-
+  // Movie Filtering Logic
+  const filteredMovies = issearched
+    ? movi.filter(movie =>
+        movie.title.toLowerCase().includes(searchfilter.toLowerCase())
+      )
+    : movi;
 
   return (
     <div>
@@ -61,12 +61,13 @@ const Movielist = () => {
         <header className="movielistheader">
           <div>
             <h2>
-              Popular Movies <img src={fire} alt="" className="navfire" />
+              Popular Movies <img src={fire} alt="fire icon" className="navfire" />
             </h2>
           </div>
 
           <div className="moviefs">
             <ul>
+              {/* Search Input and Button */}
               <li>
                 <input
                   ref={titleref}
@@ -79,11 +80,13 @@ const Movielist = () => {
                 <button onClick={onsearch} className="btn">Search</button>
               </li>
 
+              {/* Static Filter Items */}
               <li className="moviefilteritem">8+ Stars</li>
               <li className="moviefilteritem">7+ Stars</li>
               <li className="moviefilteritem">6+ Stars</li>
             </ul>
 
+            {/* Sorting Dropdowns */}
             <select className="moviesorting">
               <option value="">Sorted By</option>
               <option value="date">Date</option>
